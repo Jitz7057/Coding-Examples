@@ -1,3 +1,4 @@
+/*
 package com.example.config;
 
 import org.springframework.cache.CacheManager;
@@ -27,3 +28,4 @@ public class CacheConfig {
         return ehCacheManagerFactoryBean;
     }
 }
+*/

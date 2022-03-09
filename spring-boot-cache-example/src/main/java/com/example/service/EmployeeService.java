@@ -8,8 +8,6 @@ import org.springframework.cache.annotation.CachePut;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
-
 @Service
 public class EmployeeService {
 
@@ -24,7 +22,6 @@ public class EmployeeService {
     @Cacheable(value = "employee", key = "#id")
     public Employee getEmployeeById(int id){
         System.out.println("Get the record with id : " + id);
-        //delayExecution();
         return employeeRepository.findById(id).orElse(null);
     }
 
@@ -38,19 +35,5 @@ public class EmployeeService {
     public void deleteEmployee(int id) {
         System.out.println("Delete the record with id : " + id);
         employeeRepository.deleteById(id);
-    }
-
-    @Cacheable("employees")
-    public List<Employee> getAllEmployees() {
-        System.out.println("Getting all record");
-        return employeeRepository.findAll();
-    }
-
-    private void delayExecution() {
-        try {
-            Thread.sleep(3000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
     }
 }
